@@ -23,8 +23,7 @@ public class Main {
                 conn.setAutoCommit(false);
 
                 String SQL_QUERY = "SELECT SEQ_NAME, SEQ_VALUE FROM MYSEQUENCE WHERE SEQ_NAME = ? FOR UPDATE ";
-                try (PreparedStatement selectStatement = conn.prepareStatement(SQL_QUERY,ResultSet.TYPE_SCROLL_SENSITIVE,
-                        ResultSet.CONCUR_UPDATABLE)) {
+                try (PreparedStatement selectStatement = conn.prepareStatement(SQL_QUERY)) {
 
                     selectStatement.setString(1, "SEQ1");
                     try (ResultSet resultSet = selectStatement.executeQuery()) {
